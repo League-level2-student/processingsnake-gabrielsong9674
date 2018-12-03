@@ -187,16 +187,14 @@ void collision() {
 
 //  1. Create and initialize an ArrayList of Segments. (This will be your snake tail!)
 ArrayList<Segment> tail = new ArrayList<Segment>();
-
+Segment tailSegment;
 // 2. Complete the missing parts of the manageTail method below and call it in the draw method.
-
 void manageTail() {
-
   //Call the drawTail and checkTailCollision methods.
   drawTail();
   checkTailCollision();
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
-  Segment tailSegment = new Segment(head.getXPos(), head.getYPos());
+   tailSegment = new Segment(head.getXPos(), head.getYPos());
   
   tail.add(tailSegment);
   // To keep your tail the right length:
@@ -217,10 +215,12 @@ void drawTail() {
 // 3. Complete the missing parts of the bodyCollision method below.
 
 void checkTailCollision() {
-
   // If your head has the same location as one of your segments...
-  
+  for(Segment s: tail){
   // reset your food variable
-
+    if(head.getXPos() == s.getXPos() && head.getYPos() == s.getYPos() && head != s){
+      pieces = 0;
+    }
+  }
   //Call this method at the beginning of your manageTail method.
 }
